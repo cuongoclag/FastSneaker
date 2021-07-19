@@ -26,12 +26,23 @@ public class UserService {
 	public UserRepo userRepo;
 	@Autowired
 	public RoleRepo roleRepo;
+	
+	public User findUserByEmail(final String email) {
+		try {
+			String sql = "select * from tbl_users where email = '" + email + "'";
+			Query query = entityManager.createNativeQuery(sql, User.class);
+			return (User) query.getResultList().get(0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	public User findUserById(final int id) {
 
 		String sql = "select * from tbl_users where id = '" + id + "'";
 		Query query = entityManager.createNativeQuery(sql, User.class);
-		return (User) query.getSingleResult();
+		return (User) query.getResultList().get(0);
 	}
 
 	public Role findRoleById(final int id) {

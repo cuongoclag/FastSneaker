@@ -47,6 +47,7 @@
 			</div>
 			<!-- /top -->
 			<!-- mid -->
+			<p style="color : red">${error }</p>
 
 			<div class="mid" style="background: #d6dff3; border-radius: 5px;">
 				<form:form method="post" action="/save-guestUser"

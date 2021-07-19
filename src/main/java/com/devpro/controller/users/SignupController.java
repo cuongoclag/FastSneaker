@@ -20,6 +20,7 @@ public class SignupController {
 	
 	@Autowired
 	UserService userService;
+	
 	@RequestMapping(value = { "/signup" }, method = RequestMethod.GET)
 	public String index(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
@@ -27,11 +28,18 @@ public class SignupController {
 		return "users/UserSignUp";
 	}
 	@RequestMapping(value = { "/save-guestUser" }, method = RequestMethod.POST)
-	public String saveGuestUser(@ModelAttribute("user") User user, final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
-			throws Exception {
-		model.addAttribute("user", new User());
-		userService.saveGuestUser(user);
-		return "redirect:/";
+	public String saveGuestUser(@ModelAttribute("user") User user,
+			final ModelMap model, final HttpServletRequest request, 
+			final HttpServletResponse response, @RequestParam(name = "email") String email) throws Exception{
+		if(userService.findUserByEmail(email) == null) {
+			model.addAttribute("user", new User());
+			userService.saveGuestUser(user);
+			return "redirect:/";
+		} else {
+			user = userService.findUserByEmail(email);
+			request.setAttribute("error", "The email address is already exist!");
+			return "users/UserSignUp";
+		}
 	}
 
 }

@@ -22,6 +22,9 @@
 	rel="stylesheet">
 </head>
 <body>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
 	<!-- wrapper -->
 	<div class="wrapper">
 		<!-- header -->
@@ -37,7 +40,7 @@
 					</span>
 				</div>
 				<div class="content">
-					<form method="POST" action="/login" class="form-signin">
+					<form method="POST" action="/login" class="form-signin" onsubmit="return validateForm()">
 						<input type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" />
 						<c:if test="${not empty param.login_error}">
@@ -56,11 +59,9 @@
 								placeholder="Vui lòng nhập mật khẩu của bạn"><br> <a
 								href="#">Quên mật khẩu?</a>
 						</div>
+						<div class="g-recaptcha" data-sitekey="6LfNa6MbAAAAAEMrdL6lGuOXmFy3N7KrcfWi355b"></div>
 						<div class="right" style="margin-left:450px;margin-top:-150px;">
-							<button class="btn btn-lg btn-primary btn-block" type="submit">ĐĂNG
-								NHẬP</button>
-								<span>Hoặc đăng nhập bằng</span>
-							<button class="btn btn-lg btn-primary btn-block" type="submit">Facebook</button>
+							<button class="btn btn-lg btn-primary btn-block" type="submit">ĐĂNG NHẬP</button>
 						</div>
 					</form>
 				</div>
@@ -74,7 +75,17 @@
 	<!-- /wrapper -->
 	
 	<!-- js -->
-	<script src="${base}/css/users/bootstrap/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	function validateForm(){
+		if(grecaptcha.getResponse()){
+			return true;
+		} else {
+			alert("Please prove that you/re not robot!!!");
+			return false;
+		}
+	}
+</script>
+<script src="${base}/css/users/bootstrap/js/jquery-3.5.1.min.js"></script>
 <script src="${base}/css/users/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
