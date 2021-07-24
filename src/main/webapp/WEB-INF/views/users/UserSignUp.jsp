@@ -10,7 +10,7 @@
 <c:url value="${pageContext.request.contextPath}" var="base" />
 
 <!-- SPRING FORM -->
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="springform" uri="http://www.springframework.org/tags/form"%>
 
 
 <!DOCTYPE html>
@@ -50,58 +50,63 @@
 			<p style="color : red">${error }</p>
 
 			<div class="mid" style="background: #d6dff3; border-radius: 5px;">
-				<form:form method="post" action="/save-guestUser"
+				<form method="post" action="/save-guestUser"
 							modelAttribute="user" enctype="multipart/form-data">
 					<div class="top" style="margin-top: 20px;">
 						<div class="form-row">
 								<div class="form-group col-md-6">
 									<label>Tên đăng nhập</label>
-									<form:input type="text" class="form-control" path="username"
+									<input type="text" class="form-control" path="username" name="username" required="required"
 										placeholder="Nhập tên đăng nhập của bạn" />
 								</div>
 								<div class="form-group col-md-6">
 									<label>Họ và tên đệm</label>
-									<form:input type="text" class="form-control" path="firstName"
+									<input type="text" class="form-control" path="firstName" name="firstName" required="required"
 										placeholder="Nhập họ và tên đệm của bạn" />
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label>Mật khẩu</label>
-									<form:input type="password" class="form-control"
+									<input type="password" class="form-control" name="password" required="required"
 										path="password" placeholder="Nhập mật khẩu của bạn" />
 								</div>
 								<div class="form-group col-md-6">
 									<label for="inputPassword4">Tên</label>
-									<form:input type="text" class="form-control" path="name"
+									<input type="text" class="form-control" path="name" name="name" required="required"
 										placeholder="Nhập tên của bạn" />
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="inputEmail4">Email</label>
-									<form:input type="email" class="form-control" path="email"
+									<input type="email" class="form-control" path="email" value="${email}" name="email" required="required"
 										placeholder="nguyenvana@gmail.com" />
 								</div>
 								<div class="form-group col-md-6">
 									<label for="inputPassword4">Số điện thoại</label>
-									<form:input type="text" class="form-control" path="phone"
-										placeholder="Nhập số điện thoại của bạn" />
+									<input type="number" class="form-control" path="phone" name="phone" required="required"
+										placeholder="Nhập số điện thoại của bạn" /> 
 								</div>
 							</div>
 							<div class="form-group" style="width: 772px; margin-left: 15px;">
 								<label for="inputAddress">Địa chỉ</label>
-								<form:input type="text" class="form-control" path="address"
+								<input type="text" class="form-control" path="address" name="address" required="required"
 									placeholder="1234 Main St" />
 							</div>
 							<div class="form-check" style="margin-left: 20px;">
 							<label>Giới Tính</label> <br>
-								<form:radiobutton path="gender" class="form-check-input"
+								<input type="radio" path="gender" class="form-check-input" name="gender" required="required"
 									value="true" />
 								<label class="form-check-label"> Nam </label>
-								<form:radiobutton path="gender" class="form-check-input"
+								<input type="radio" path="gender" class="form-check-input" name="gender" required="required"
 									value="false" />
 								<label class="form-check-label"> Nữ </label>
+							</div>
+							<div class="form-group" style="width: 772px; margin-left: 15px;">
+								<input type="text" class="form-control" path="" name="code"
+									placeholder="Code" />
+								<button type="submit" formaction="/send-code">Send Code</button>
 							</div>
 					</div>
 					<div class="mid" style="margin-top: 10px;"></div>
@@ -116,7 +121,7 @@
 							chúng tôi.
 						</p>
 					</div>
-				</form:form>
+				</form>
 			</div>
 			<!-- /mid -->
 
