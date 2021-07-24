@@ -157,7 +157,7 @@
 										<th scope="row">1</th>
 										<td>${item.productName }</td>
 										<td>${item.unitPrice }</td>
-										<td><input name="quantities" value="${item.quantity }" onblur="this.form.submit()" /></td>
+										<td><input type="number" min="1" max="100" name="quantities" value="${item.quantity }" onblur="this.form.submit()" /></td>
 										<td>${item.unitPrice*item.quantity }</td>
 										<td><label class="btn btn-success" onclick="confirmDelete('${item.productId}')">
 												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" 
