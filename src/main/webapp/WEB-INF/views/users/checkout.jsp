@@ -14,184 +14,129 @@
 
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="favicon.png" rel="icon">
+    <meta name="author" content="Nghia Minh Luong">
+    <meta name="keywords" content="Default Description">
+    <meta name="description" content="Default keyword">
+    <title>Sky - Checkout</title>
+    <!-- Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow:300,400,700%7CMontserrat:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/ps-icon/style.css">
+    <!-- CSS Library-->
+    <link rel="stylesheet" href="${base}/resources/user/plugins/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/owl-carousel/assets/owl.carousel.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/slick/slick/slick.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/bootstrap-select/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/Magnific-Popup/dist/magnific-popup.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/revolution/css/settings.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/revolution/css/layers.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/revolution/css/navigation.css">
+    <!-- Custom-->
+    <link rel="stylesheet" href="${base}/resources/user/css/style.css">
+    
+  </head>
+  
+  	<!-- header -->
+		<jsp:include page="/WEB-INF/views/users/common/header.jsp"></jsp:include>
+	<!-- /header -->
 
-<head>
-
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-
-<title>Shop</title>
-
-<!-- css -->
-<link href="${base}/css/users/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-</head>
-
-<body>
-
-	<!-- Navigation -->
-	<jsp:include page="/WEB-INF/views/users/common/header.jsp"></jsp:include>
-
-	<!-- Page Content -->
-	<div class="container" style=" width: 1500px;margin: auto; background: #f8f9fb;">
-
-		<div class="row" style=" width: 1000px;margin: auto; margin-bottom: 50px;">
-
-			<h1 class="my-4">Thanh toán</h1>
-			<div class="col-lg-9" style="display: flex;">
-
-				<div class="row">
-					<div class="col-lg-12 col-md-12 mb-12">
-						<form action="${base }/cart/finish" method="post"><div class="form-group">
-							</div>
-							<div class="form-group">
-								<label for="exampleInputEmail1">Họ và tên</label> <br>
-								<sec:authorize access="isAuthenticated()">
-									<div>
-										<%
-											String username = "";
-										Object principal = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication()
-												.getPrincipal();
-										if (principal instanceof org.springframework.security.core.userdetails.UserDetails) {
-											username = ((User) principal).getFirstName() + " " + ((User) principal).getName();
-										}
-										out.write(username);
-										%>
-									</div>
-								</sec:authorize>
-								<sec:authorize access="!isAuthenticated()">
-									<input type="text" name="customerName"
-										placeholder="Vui lòng nhập trên của bạn" style="height: 40px; border: 1px solid red; border-radius: 5px; width: 250px;">
-								</sec:authorize>
-							</div>
-							<div class="form-group">
-								<label for="exampleInputPassword1">Số điện thoại</label><br>
-								<sec:authorize access="isAuthenticated()">
-									<div>
-										<%
-											String username1 = "";
-										Object principal = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication()
-												.getPrincipal();
-										if (principal instanceof org.springframework.security.core.userdetails.UserDetails) {
-											username1 = ((User) principal).getPhone();
-										}
-										out.write(username1);
-										%>
-									</div>
-								</sec:authorize>
-								<sec:authorize access="!isAuthenticated()">
-									<input type="text" name="customerPhone"
-										placeholder="Nhập phone" style="height: 40px; border: 1px solid red; border-radius: 5px; width: 250px;">
-								</sec:authorize>
-							</div>
-							<div class="form-group">
-								<label for="exampleInputPassword1">Email</label><br>
-								<sec:authorize access="isAuthenticated()">
-									<div>
-										<%
-											String username1 = "";
-										Object principal = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication()
-												.getPrincipal();
-										if (principal instanceof org.springframework.security.core.userdetails.UserDetails) {
-											username1 = ((User) principal).getEmail();
-										}
-										out.write(username1);
-										%>
-									</div>
-								</sec:authorize>
-								<sec:authorize access="!isAuthenticated()">
-									<input type="text" name="customerEmail"
-										placeholder="Nhập Email" style="height: 40px; border: 1px solid red; border-radius: 5px; width: 250px;">
-								</sec:authorize>
-							</div>
-							<div class="form-group">
-								<label for="exampleInputPassword1">Địa chỉ giao hàng</label><br>
-								<sec:authorize access="isAuthenticated()">
-									<div>
-										<%
-											String username2 = "";
-										Object principal = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication()
-												.getPrincipal();
-										if (principal instanceof org.springframework.security.core.userdetails.UserDetails) {
-											username2 = ((User) principal).getAddress();
-										}
-										out.write(username2);
-										%>
-									</div>
-								</sec:authorize>
-								<sec:authorize access="!isAuthenticated()">
-									<input type="text" name="customerAddress"
-										placeholder="Vui Lòng nhập địa chỉ của bạn" style="height: 40px; border: 1px solid red; border-radius: 5px; width: 250px;">
-								</sec:authorize>
-							</div>
-							<form action="${base }/cart/finish" method="post">
-						    	<button type="submit" class="btn btn-primary">Thanh toán</button>
-							</form>
-							<form action="${base }/paypal" method="post">
-						    	<button type="submit" class="btn btn-primary">Thanh toán qua PayPal</button>
-							</form>
-						</form>
-					</div>
-				</div>
-				<div class="row" style="margin-left: 150px;">
-					<div class="col-lg-12 col-md-12 mb-12">
-						<h1 class="my-4"></h1>
-						<form method="post" action="${base }/cart/check-out/update">
-						<table class="table" style="background: white; border-radius: 5px; width: 600px;">
-							<thead>
-								<tr>
-									<th scope="col">#</th>
-									<th scope="col">Tên sản phẩm</th>
-									<th scope="col">Đơn giá</th>
-									<th scope="col">Số lượng></th>
-									<th scope="col">Số tiền</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach items="${GIO_HANG.cartItems}" var="item">
-
-									<tr>
-										<th scope="row">1</th>
-										<td>${item.productName }</td>
-										<td>${item.unitPrice }</td>
-										<td><input type="number" min="1" max="100" name="quantities" value="${item.quantity }" onblur="this.form.submit()" /></td>
-										<td>${item.unitPrice*item.quantity }</td>
-										<td><label class="btn btn-success" onclick="confirmDelete('${item.productId}')">
-												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" 
-													viewBox="0 0 16 16"><path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-												</svg>
-											</label>
-										</td>
-									</tr>
-
-								</c:forEach>
-								<div style="color : blue">Tong : ${TOTAL}</div>
-							</tbody>
-						</table>
-						</form>
-						
-					</div>
-
-				</div>
-				<!-- /.row -->
-
-			</div>
-			<!-- /.col-lg-9 -->
-
-		</div>
-		<!-- /.row -->
-
-	</div>
-	<!-- /.container -->
-
-	<!-- Footer -->
-	<jsp:include page="/WEB-INF/views/users/common/footer.jsp"></jsp:include>
-
-	<script src="${base}/css/users/bootstrap/js/jquery-3.5.1.min.js"></script>
-	<script type="text/javascript" src="${base}/js/users/Cart.js"></script>
-</body>
-
+  <body class="ps-loading">
+<main class="ps-main">
+      <div class="ps-content pt-80 pb-80">
+        <div class="ps-container">
+          <div class="ps-cart-listing">
+          <form method="post" action="${base }/cart/check-out/update">
+            <table class="table ps-cart__table">
+              <thead>
+                <tr>
+                  <th>All Products</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Total</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+              <c:forEach items="${GIO_HANG.cartItems}" var="item">
+                <tr>
+                  <td><a class="ps-product__preview" href="#">${item.productName }</a></td>
+                  <td>${item.unitPrice }</td>
+                  <td>
+                    <div class="form-group--number">
+                      <input class="form-control" type="number" min="1" max="100" name="quantities" type="text" value="${item.quantity }" onblur="this.form.submit()" />
+                    </div>
+                  </td>
+                  <td>${item.unitPrice*item.quantity }</td>
+                  <td>
+                    <label class="ps-remove" onclick="confirmDelete('${item.productId}')"></label>
+                  </td>
+                </tr>
+               </c:forEach>
+              </tbody>
+            </table>
+            </form>
+            <div class="ps-cart__actions">
+              <div class="ps-cart__promotion">
+                <div class="form-group">
+                  <div class="ps-form--icon"><i class="fa fa-angle-right"></i>
+                    <input class="form-control" type="text" placeholder="Promo Code">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="ps-btn ps-btn--gray">Continue Shopping</button>
+                </div>
+              </div>
+              <div class="ps-cart__total">
+                <h3>Total Price: <span> ${TOTAL}</span></h3>
+                <form action="${base }/cart/finish" method="post">
+					<button type="submit" class="ps-btn">Process to checkout<i class="ps-icon-next"></i></button>
+				</form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- footer -->
+		<jsp:include page="/WEB-INF/views/users/common/footer.jsp"></jsp:include>
+	  <!-- /footer -->
+      
+    </main>
+    <!-- JS Library-->
+    <script type="text/javascript" src="${base}/resources/user/plugins/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/owl-carousel/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/gmap3.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/imagesloaded.pkgd.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/isotope.pkgd.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/slick/slick/slick.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/elevatezoom/jquery.elevatezoom.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/Magnific-Popup/dist/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx39JFH5nhxze1ZydH-Kl8xXM3OK4fvcg&amp;region=GB"></script><script type="text/javascript" src="${base}/resources/user/plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="${base}/resources/user/plugins/revolution/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="${base}/resources/user/plugins/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script type="text/javascript" src="${base}/resources/user/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script type="text/javascript" src="${base}/resources/user/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script type="text/javascript" src="${base}/resources/user/plugins/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script type="text/javascript" src="${base}/resources/user/plugins/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script type="text/javascript" src="${base}/resources/user/plugins/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <!-- Custom scripts-->
+    <script src="${base}/resources/user/js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/js/main.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/js/Cart.js"></script>
+  </body>
 </html>

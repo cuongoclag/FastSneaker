@@ -36,7 +36,7 @@ public class SignupController {
 	public String index(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 		model.addAttribute("user", new User());
-		return "users/UserSignUp";
+		return "login";
 	}
 	@RequestMapping(value = { "/save-guestUser" }, method = RequestMethod.POST)
 	public String saveGuestUser(@ModelAttribute("user") User user,
@@ -47,7 +47,7 @@ public class SignupController {
 		String codeVerify = (String) session.getAttribute("codeVerify");
 		if (!code.equals(codeVerify)) {
 			request.setAttribute("error", "Invalid code, please try again!");
-			return "users/UserSignUp";
+			return "login";
 		} else {
 			if(userService.findUserByEmail(email) == null) {
 				model.addAttribute("user", new User());
@@ -56,7 +56,7 @@ public class SignupController {
 			} else {
 				user = userService.findUserByEmail(email);
 				request.setAttribute("error", "The email address is already exist!");
-				return "users/UserSignUp";
+				return "login";
 			}
 		}
 	}
@@ -91,7 +91,7 @@ public class SignupController {
 		if(userService.findUserByEmail(email) != null) {
 			user = userService.findUserByEmail(email);
 			request.setAttribute("error", "The email address is already exist!");
-			return "users/UserSignUp";
+			return "login";
 		}
 		sendEmail("fastsneakercompany@gmail.com", email, "Welcome to FlatShop!",
 				"Hello, " + email.split("@")[0] + "! Please confirm that you can login in FlatShop!" + " Your confirmation code is: " + code);

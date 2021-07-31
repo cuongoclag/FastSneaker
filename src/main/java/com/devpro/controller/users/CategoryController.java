@@ -44,7 +44,7 @@ public class CategoryController extends BaseController {
 		// lấy sản phẩm từ category.
 		model.addAttribute("products", productService.search(productSearch));
 
-		return "users/UserHome";
+		return "users/product";
 	}
 
 }

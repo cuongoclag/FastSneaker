@@ -1,123 +1,123 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- sử dụng tiếng việt -->
+<%@page import="com.devpro.entities.User"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 
 <!-- JSTL -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<c:url value="${pageContext.request.contextPath}" var="base" />
-
-<!-- SPRING FORM -->
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<!-- spring taglibs -->
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
-<html>
-<head>
-<title>Sign Up</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-
-<link href="${base}/css/users/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="${base}/css/users/orderView.css" rel="stylesheet">
-
-</head>
-<body>
-	<!-- wrapper -->
-	<div class="wrapper">
-		<!-- header -->
+<!--[if IE 7]><html class="ie ie7"><![endif]-->
+<!--[if IE 8]><html class="ie ie8"><![endif]-->
+<!--[if IE 9]><html class="ie ie9"><![endif]-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="favicon.png" rel="icon">
+    <meta name="author" content="Nghia Minh Luong">
+    <meta name="keywords" content="Default Description">
+    <meta name="description" content="Default keyword">
+    <title>Sky - Checkout</title>
+    <!-- Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow:300,400,700%7CMontserrat:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/ps-icon/style.css">
+    <!-- CSS Library-->
+    <link rel="stylesheet" href="${base}/resources/user/plugins/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/owl-carousel/assets/owl.carousel.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/slick/slick/slick.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/bootstrap-select/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/Magnific-Popup/dist/magnific-popup.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/revolution/css/settings.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/revolution/css/layers.css">
+    <link rel="stylesheet" href="${base}/resources/user/plugins/revolution/css/navigation.css">
+    <!-- Custom-->
+    <link rel="stylesheet" href="${base}/resources/user/css/style.css">
+    
+  </head>
+  
+  	<!-- header -->
 		<jsp:include page="/WEB-INF/views/users/common/header.jsp"></jsp:include>
-		<!-- /header -->
-		<!-- main -->
-		<div class="main">
-			<span style="font-size: 18px;">Chi tiết đơn hàng
-				${saleOrders.code }</span>
-			<div class="info-user">
-				<div class="info-1">
-					<div class="title">
-						<span>ĐỊA CHỈ NGƯỜI NHẬN</span>
-					</div>
-					<div class="content">
-						<br> <span style="font-size: 18px; font-weight: bold;">${saleOrders.customerName }</span><br>
-						<span>Địa chỉ: ${saleOrders.customerAddress }</span><br> <span>Số
-							điện thoại: ${saleOrders.customerPhone }</span>
-					</div>
-				</div>
-				<div class="info-2">
-					<div class="title">
-						<span>HÌNH THỨC THANH TOÁN</span>
-					</div>
-					<div class="content">
-						<br> <span>Thanh toán tiền mặt khi nhận hàng</span>
-					</div>
-				</div>
+	<!-- /header -->
+
+  <body class="ps-loading">
+    <main class="ps-main">
+      <div class="ps-checkout pt-80 pb-80">
+        <div class="ps-container">
+        <div class="info-1">
+			<div class="title">
+				<span>ĐỊA CHỈ NGƯỜI NHẬN</span>
 			</div>
-			<div class="info-order">
-				<table>
-					<thead>
-						<tr>
-							<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sản phẩm</th>
-							<th>Giá</th>
-							<th>Giảm Giá</th>
-							<th>Số lượng</th>
-							<th>Tạm tính</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="saleOrderProduct" items="${saleOrderProducts }">
-							<tr>
-								<td><img alt=""
-									src="${base}/file/upload/${saleOrderProduct.product.productImages[0].path}"><span><a
-										href="${base}/detail-product/${saleOrderProduct.product.seo }">${saleOrderProduct.product.title }</a></span></td>
-								<td>${saleOrderProduct.product.priceVN }</td>
-								<td>0 đ</td>
-								<td>${saleOrderProduct.quantity }</td>
-								<td>${saleOrderProduct.product.priceVN }</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-
-				</table>
-				<table>
-					<tfoot>
-						<tr>
-							<td><br></td>
-						</tr>
-						<tr>
-							<td><p>Tạm tính</p></td>
-							<td><p>${saleOrders.totalVN }</p></td>
-						</tr>
-
-						<tr>
-							<td><p>Giảm giá</p></td>
-							<td><p>0 ₫</p></td>
-						</tr>
-						<tr>
-							<td><p>Phí vận chuyển</p></td>
-							<td><p>
-									0 ₫</span></td>
-						</tr>
-						<tr>
-							<td><p>Tổng cộng</p></td>
-							<td><p class="sum">${saleOrders.totalVN }</p></td>
-						</tr>
-					</tfoot>
-				</table>
-
+			<div class="content">
+				<br> <span style="font-size: 18px; font-weight: bold;">${saleOrders.customerName }</span><br>
+				<span>Địa chỉ: ${saleOrders.customerAddress }</span><br> <span>Số
+					điện thoại: ${saleOrders.customerPhone }</span>
 			</div>
 		</div>
-		<!-- /main -->
-		<!-- footer -->
-		<jsp:include page="/WEB-INF/views/users/common/footer.jsp"></jsp:include>
-		<!-- /footer -->
-	</div>
-	<!-- /wrapper -->
+        
+		   <table class="table table-bordered text-center">
+		    <thead>
+		      <tr>
+		        <th class="text-center h3 font-weight-bold">Sản phẩm</th>
+		        <th class="text-center h3 font-weight-bold">Giá</th>
+		        <th class="text-center h3 font-weight-bold">Giảm Giá</th>
+		        <th class="text-center h3 font-weight-bold">Số lượng</th>
+		        <th class="text-center h3 font-weight-bold">Tạm tính</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <c:forEach var="saleOrderProduct" items="${saleOrderProducts }">
+				<tr>
+					<td><img alt="" style="width: 80px" src="${base}/file/upload/${saleOrderProduct.product.productImages[0].path}"><span>
+					<a href="${base}/detail-product/${saleOrderProduct.product.seo }">${saleOrderProduct.product.title }</a></span></td>
+					<td>${saleOrderProduct.product.priceVN }</td>
+					<td>0 đ</td>
+					<td>${saleOrderProduct.quantity }</td>
+					<td>${saleOrderProduct.product.priceVN }</td>
+				</tr>
+			</c:forEach>
+		    </tbody>
+		  </table>
+        </div>
+      </div>
 
-	<!-- js  -->
-	<script src="${base}/css/users/bootstrap/js/jquery-3.5.1.min.js"></script>
-	<script src="${base}/css/users/bootstrap/js/bootstrap.min.js"></script>
-</body>
+    </main>
+    <!-- JS Library-->
+    <script type="text/javascript" src="${base}/resources/user/plugins/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/owl-carousel/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/gmap3.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/imagesloaded.pkgd.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/isotope.pkgd.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/slick/slick/slick.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/elevatezoom/jquery.elevatezoom.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/Magnific-Popup/dist/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="${base}/resources/user/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx39JFH5nhxze1ZydH-Kl8xXM3OK4fvcg&amp;region=GB"></script><script type="text/javascript" src="${base}/resources/user/plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="${base}/resources/user/plugins/revolution/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="${base}/resources/user/plugins/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script type="text/javascript" src="${base}/resources/user/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script type="text/javascript" src="${base}/resources/user/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script type="text/javascript" src="${base}/resources/user/plugins/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script type="text/javascript" src="${base}/resources/user/plugins/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script type="text/javascript" src="${base}/resources/user/plugins/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <!-- Custom scripts-->
+    <script type="text/javascript" src="${base}/resources/user/js/main.js"></script>
+  </body>
 </html>

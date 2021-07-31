@@ -17,107 +17,116 @@
 
 <c:url value="${pageContext.request.contextPath}" var="base" />
 
-<link rel="stylesheet" type="text/css"
-	href="${base}/css/users/Header.css">
-<!-- header -->
-<div class="header">
-	<!-- toolbar -->
-	<div class="toolbar">
-		<ul>
-			<sec:authorize access="isAuthenticated()">
-				<li class="text-nowrap">
-					<%
-						String username = "";
-					String id = " ";
-					Object principal = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication()
-							.getPrincipal();
-					if (principal instanceof org.springframework.security.core.userdetails.UserDetails) {
-						username = ((User) principal).getName();
-						id = String.valueOf(((User)principal).getId());
-
-					}
-					
-					%> 
-				<a class="nav-link"
-					href="${base}/history/<%=id%>"> <%=username%>
-				</a>
-				</li>
-			</sec:authorize>
-			<sec:authorize access="isAuthenticated()">
-				<li><a href="${base}/logout">Đăng Xuất</a></li>
-			</sec:authorize>
-			<sec:authorize access="!isAuthenticated()">
-				<li><a href="${base}/login"> Đăng nhập </a></li>
-				<li><a href="${base}/signup">Đăng ký</a></li>
-			</sec:authorize>
-			<li><a href="${base}/contact">Liên hệ</a></li>
-		</ul>
-	</div>
-	<!-- /toolbar -->
-	<!-- content -->
-	<div class="content">
-		<div class="left">
-			<img src="${base}/images/users/logo.jpg">
-		</div>
-		<div class="middle">
-			<form action="${base}/">
-				<ul style="list-style: none;">
-					<input type="hidden" name="" />
-					<li><input type="text"
-						style="padding-left: 8px; margin-top: 20px;" class=""
-						name="keyword"
-						placeholder="Nhập tên điện thoại, laptop, phụ kiện... cần tìm"
-						th:value="${keyword }" required /> <input type="submit"
-						value="Search" style="width: 60px;" /> </li>
-
-
-				</ul>
-			</form>
-		</div>
-		<div class="right">
-			<a href="#"> <svg width="3em" height="3em" viewBox="0 0 16 16"
-					class="bi bi-bell" fill="currentColor"
-					xmlns="http://www.w3.org/2000/svg">
-						<path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2z" />
-						<path fill-rule="evenodd"
-						d="M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
-						</svg>
-			</a> <a href="${base}/cart/check-out"> <i><svg width="3em"
-						height="3em" viewBox="0 0 16 16" class="bi bi-cart3"
-						fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-						<path fill-rule="evenodd"
-							d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-						</svg></i><span id="btnCheckout">${SL_SP_GIO_HANG }</span>
-			</a>
-		</div>
-	</div>
-	<!-- /content -->
-	<!-- menu -->
-	<div id="menu">
-		<ul>
-			<li><a href="${base}/#">TRANG CHỦ</a></li>
-			<li><a href="#">LAPTOP</a></li>
-			<li><a href="#">PHỤ KIỆN</a></li>
-			<li><a href="#">KHUYẾN MÃI</a></li>
-			<li><a href="#">TRẢ GÓP</a></li>
-			<li><a href="#">TRỢ GIÚP</a></li>
-		</ul>
-	</div>
-	<div class="menu-1">
-		<ul>
-			<li><a href="${base}/#">TRANG CHỦ</a></li>
-			<li><a href="#">LAPTOP</a></li>
-			<li><a href="#">PHỤ KIỆN</a></li>
-			<li><a href="#">KHUYẾN MÃI</a></li>
-			<li><a href="#">TRẢ GÓP</a></li>
-			<li><a href="#">TRỢ GIÚP</a></li>
-		</ul>
-		<!-- /menu -->
-	</div>
-	<!-- /header -->
-
-	<script type="text/javascript">
-		function clearFilter() {
-			window.location = '/';
-		}
-	</script>
+<div class="header--sidebar"></div>
+<header class="header">
+      <div class="header__top">
+        <div class="container-fluid">
+          <div class="row">
+                <div class="col-lg-6 col-md-8 col-sm-6 col-xs-12 ">
+                  <p>460 West 34th Street, 15th floor, New York  -  Hotline: 804-377-3580 - 804-399-3580</p>
+                </div>
+                <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 ">
+                  <div class="header__actions">
+                  	<sec:authorize access="isAuthenticated()">
+	                  	<div class="btn-group ps-dropdown">
+	                  	<%
+							String username = "";
+						String id = " ";
+						Object principal = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication()
+								.getPrincipal();
+						if (principal instanceof org.springframework.security.core.userdetails.UserDetails) {
+							username = ((User) principal).getName();
+							id = String.valueOf(((User)principal).getId());
+						}
+						%> 
+	                  	<a href="${base}/history/<%=id%>"><%=username%></a>
+	                  	</div>
+                  	</sec:authorize>
+                  	<sec:authorize access="isAuthenticated()">
+                  		<div class="btn-group ps-dropdown">
+							<a href="${base}/logout">Logout</a>
+						</div>
+					</sec:authorize>
+					<sec:authorize access="!isAuthenticated()">
+						<div class="btn-group ps-dropdown">
+							<a href="${base}/login"> Login </a>
+						</div>
+						<div class="btn-group ps-dropdown">
+							<a href="${base}/signup">Sign Up</a>
+						</div>
+					</sec:authorize>
+                    <div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">USD<i class="fa fa-angle-down"></i></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#"><img src="${base}/resources/user/images/flag/usa.svg" alt=""> USD</a></li>
+                        <li><a href="#"><img src="${base}/resources/user/images/flag/singapore.svg" alt=""> SGD</a></li>
+                        <li><a href="#"><img src="${base}/resources/user/images/flag/japan.svg" alt=""> JPN</a></li>
+                      </ul>
+                    </div>
+                    <div class="btn-group ps-dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language<i class="fa fa-angle-down"></i></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">English</a></li>
+                        <li><a href="#">Japanese</a></li>
+                        <li><a href="#">Chinese</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+          </div>
+        </div>
+      </div>
+      <nav class="navigation">
+        <div class="container-fluid">
+          <div class="navigation__column left">
+            <div class="header__logo"><a class="ps-logo" href="index.html"><img src="${base}/resources/user/images/logo.png" alt=""></a></div>
+          </div>
+          <div class="navigation__column center">
+                <ul class="main-menu menu">
+                  <li class="menu-item menu-item-has-children dropdown"><a href="${base}/">Home</a>
+                  </li>
+                  <li class="menu-item menu-item-has-children dropdown"><a href="${base}/product">Product</a>
+                        <ul class="sub-menu">
+                        	<c:forEach var="category" items="${categories }">
+                          		<li class="menu-item">
+                          		<a href="${base }/product/category/${category.seo}">${category.name }
+                          		</a></li>
+                          	</c:forEach>
+                        </ul>
+                  </li>
+                  <li class="menu-item menu-item-has-children dropdown"><a href="${base}/contact">Contact</a>
+                  </li>
+                </ul>
+          </div>
+          <div class="navigation__column right">
+            <form class="ps-search--header" action="${base}/" method="get">
+              <input class="form-control" name="keyword" th:value="${keyword }" type="text" placeholder="Search Product…">
+              <button type="submit" value="Search"><i class="ps-icon-search"></i></button>
+            </form>
+            <div class="ps-cart"><a class="ps-cart__toggle" href="${base}/cart/check-out"><span id="btnCheckout"><i>${SL_SP_GIO_HANG }</i></span><i class="ps-icon-shopping-cart"></i></a>
+              <div class="ps-cart__listing">
+                <div class="ps-cart__content">
+                  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
+                    <div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="${base}/resources/user/images/cart-preview/3.jpg" alt=""></div>
+                    <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="">The Rolling Pin</a>
+                      <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="ps-cart__total">
+                  <p>Number of items:<span>36</span></p>
+                  <p>Item Total:<span>£528.00</span></p>
+                </div>
+                <div class="ps-cart__footer"><a class="ps-btn" href="${base}/cart/check-out">Check out<i class="ps-icon-arrow-left"></i></a></div>
+              </div>
+            </div>
+            <div class="menu-toggle"><span></span></div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="header-services">
+      <div class="ps-services owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="7000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="false" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on">
+        <p class="ps-service"><i class="ps-icon-delivery"></i><strong>Free delivery</strong>: Get free standard delivery on every order with Sky Store</p>
+        <p class="ps-service"><i class="ps-icon-delivery"></i><strong>Free delivery</strong>: Get free standard delivery on every order with Sky Store</p>
+        <p class="ps-service"><i class="ps-icon-delivery"></i><strong>Free delivery</strong>: Get free standard delivery on every order with Sky Store</p>
+      </div>
+    </div>

@@ -123,8 +123,6 @@
 	<!-- Footer -->
 	<jsp:include page="/WEB-INF/views/users/common/footer.jsp"></jsp:include>
 
-	<!-- java script -->
-	<jsp:include page="/WEB-INF/views/users/common/js.jsp"></jsp:include>
 
 </body>
 
