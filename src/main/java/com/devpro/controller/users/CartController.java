@@ -113,34 +113,21 @@ public class CartController extends BaseController {
 	public String finish(final ModelMap model, final HttpServletRequest request, final HttpServletResponse response)
 			throws Exception {
 		HttpSession httpSession = request.getSession();
-		String customerName = null;
-		String customerAddress = null;
-		String customerPhone = null;
-		String customerEmail = null;
 
 		if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != null) {
 			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			if (principal instanceof org.springframework.security.core.userdetails.UserDetails) {
-				customerPhone = ((User) principal).getPhone();
-				customerName = ((User) principal).getName();
-				customerAddress = ((User) principal).getAddress();
-				customerEmail = ((User) principal).getEmail();
+				String customerPhone = ((User) principal).getPhone();
+				String customerName = ((User) principal).getName();
+				String customerAddress = ((User) principal).getAddress();
+				String customerEmail = ((User) principal).getEmail();
 
 				model.addAttribute("customerName", ((User) principal).getName());
 				model.addAttribute("customerAddress", ((User) principal).getAddress());
 				model.addAttribute("customerPhone", ((User) principal).getPhone());
 				model.addAttribute("customerEmail", ((User) principal).getEmail());
 			} else {
-
-				customerPhone = request.getParameter("customerPhone");
-				customerAddress = request.getParameter("customerAddress");
-				customerName = request.getParameter("customerName");
-				customerEmail = request.getParameter("customerEmail");
-
-				model.addAttribute("customerName", request.getParameter("customerName"));
-				model.addAttribute("customerAddress", request.getParameter("customerAddress"));
-				model.addAttribute("customerPhone", request.getParameter("customerPhone"));
-				model.addAttribute("customerEmail", request.getParameter("customerEmail"));
+				return "login";
 			}
 		}
 
