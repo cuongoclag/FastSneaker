@@ -41,7 +41,7 @@
 
 				<div class="row">
 					<h1 class="my-4">Thanh toán</h1>
-					<div class="col-lg-12 col-md-12 mb-12">Qúy khách đã thanh toán qua Paypal số tiền ${sumVN }</div>
+					<div class="col-lg-12 col-md-12 mb-12">Qúy khách đã thanh toán qua Paypal số tiền ${sum }</div>
 				</div>
 				<!-- /.row -->
 				<div class="col-lg-9">
@@ -98,7 +98,7 @@
 									<tr>
 										<td>Tổng:</td>
 										<td></td>
-										<td>${sumVN }</td>
+										<td>${sum }</td>
 									</tr>
 
 								</tbody>

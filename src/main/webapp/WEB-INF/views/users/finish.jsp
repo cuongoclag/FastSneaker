@@ -24,7 +24,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link href="apple-touch-icon.png" rel="apple-touch-icon">
-    <link href="favicon.png" rel="icon">
+    <link href="${base}/resources/user/images/logo_fastsneaker.jpg" rel="icon">
     <meta name="author" content="Nghia Minh Luong">
     <meta name="keywords" content="Default Description">
     <meta name="description" content="Default keyword">
@@ -99,13 +99,13 @@
                           <tbody>
                           <c:forEach items="${cartItems}" var="item">
                             <tr>
-                              <td>${item.productName } x ${item.quantity }</td>
-                              <td>${item.unitPrice*item.quantity }</td>
+                              <td>${item.productName } $ x ${item.quantity }</td>
+                              <td>${item.unitPrice*item.quantity } $</td>
                             </tr>
 						  </c:forEach>
                             <tr>
                               <td  style="color: yellow">Order Total</td>
-                              <td  style="color: yellow">${sumVN }</td>
+                              <td  style="color: yellow">${sum } $</td>
                             </tr>
                           </tbody>
                         </table>

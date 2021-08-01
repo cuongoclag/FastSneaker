@@ -11,11 +11,11 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link href="apple-touch-icon.png" rel="apple-touch-icon">
-    <link href="favicon.png" rel="icon">
+    <link href="${base}/resources/user/images/logo_fastsneaker.jpg" rel="icon">
     <meta name="author" content="">
     <meta name="keywords" content="Default Description">
     <meta name="description" content="Default keyword">
-    <title>Sky - Homepage</title>
+    <title>FastSneaker</title>
     <!-- Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow:300,400,700%7CMontserrat:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="${base}/resources/user/plugins/font-awesome/css/font-awesome.min.css">
@@ -92,7 +92,7 @@
                   </select>
                 </div>
                 <h1>${product.title }</h1>
-                <h3 class="ps-product__price">${product.priceVN }</h3>
+                <h3 class="ps-product__price">${product.price } $</h3>
                 <div class="ps-product__block ps-product__quickview">
                   <h4>QUICK REVIEW</h4>
                   <p>${product.shortDetails }</p>

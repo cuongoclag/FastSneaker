@@ -21,7 +21,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link href="apple-touch-icon.png" rel="apple-touch-icon">
-    <link href="favicon.png" rel="icon">
+    <link href="${base}/resources/user/images/logo_fastsneaker.jpg" rel="icon">
     <meta name="author" content="Nghia Minh Luong">
     <meta name="keywords" content="Default Description">
     <meta name="description" content="Default keyword">
@@ -70,13 +70,13 @@
               <c:forEach items="${GIO_HANG.cartItems}" var="item">
                 <tr>
                   <td><a class="ps-product__preview" href="#">${item.productName }</a></td>
-                  <td>${item.unitPrice }</td>
+                  <td>${item.unitPrice } $</td>
                   <td>
                     <div class="form-group--number">
                       <input class="form-control" type="number" min="1" max="100" name="quantities" type="text" value="${item.quantity }" onblur="this.form.submit()" />
                     </div>
                   </td>
-                  <td>${item.unitPrice*item.quantity }</td>
+                  <td>${item.unitPrice*item.quantity } $</td>
                   <td>
                     <label class="ps-remove" onclick="confirmDelete('${item.productId}')"></label>
                   </td>
@@ -97,7 +97,7 @@
                 </div>
               </div>
               <div class="ps-cart__total">
-                <h3>Total Price: <span> ${TOTAL}</span></h3>
+                <h3>Total Price: <span> ${TOTAL} $</span></h3>
                 <form action="${base }/cart/finish" method="post">
 					<button type="submit" class="ps-btn">Process to checkout<i class="ps-icon-next"></i></button>
 				</form>

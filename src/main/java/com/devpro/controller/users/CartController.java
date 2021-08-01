@@ -165,6 +165,7 @@ public class CartController extends BaseController {
 		model.addAttribute("quantityCart", cartItems.size());
 		model.addAttribute("cartItems", cartItems);
 		model.addAttribute("sumVN", sumVN);
+		model.addAttribute("sum", sum);
 		//saleOrderService.saveOrderProduct(customerAddress, customerName, customerPhone, customerEmail, httpSession);
 		return "users/finish";
 	}

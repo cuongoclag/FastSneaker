@@ -52,22 +52,22 @@ public class ProductService {
 		if (productSearch.getTypePrice() != null && !productSearch.getTypePrice().isEmpty()) {
 			int price = Integer.parseInt(productSearch.getTypePrice());
 			if (price == 1) {
-				jpql += " and p.status= " + productSearch.getStatusProduct() +" and price >= " + 0 + " and price <= " + 5000000;
+				jpql += " and p.status= " + productSearch.getStatusProduct() +" and price >= " + 0 + " and price <= " + 1000;
 			}
 			if (price == 2) {
-				jpql += " and p.status= " + productSearch.getStatusProduct() +" and price >= " + 5000000 + " and price <= " + 10000000;
+				jpql += " and p.status= " + productSearch.getStatusProduct() +" and price >= " + 1000 + " and price <= " + 2000;
 
 			}
 			if (price == 3) {
-				jpql += " and p.status= " + productSearch.getStatusProduct() +" and price >= " + 10000000 + " and price <= " + 15000000;
+				jpql += " and p.status= " + productSearch.getStatusProduct() +" and price >= " + 2000 + " and price <= " + 3000;
 
 			}
 			if (price == 4) {
-				jpql += " and p.status= " + productSearch.getStatusProduct() +" and price >= " + 15000000 + " and price <= " + 20000000;
+				jpql += " and p.status= " + productSearch.getStatusProduct() +" and price >= " + 3000 + " and price <= " + 4000;
 
 			}
 			if (price == 5) {
-				jpql +=" and p.status= " + productSearch.getStatusProduct() + " and price >= " + 20000000;
+				jpql +=" and p.status= " + productSearch.getStatusProduct() + " and price >= " + 4000;
 			}
 		}
 		if (productSearch.getSort() != null && !productSearch.getSort().isEmpty()) {

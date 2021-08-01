@@ -24,11 +24,11 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link href="apple-touch-icon.png" rel="apple-touch-icon">
-    <link href="favicon.png" rel="icon">
+    <link href="${base}/resources/user/images/logo_fastsneaker.jpg" rel="icon">
     <meta name="author" content="">
     <meta name="keywords" content="Default Description">
     <meta name="description" content="Default keyword">
-    <title>Sky - Homepage</title>
+    <title>FastSneaker</title>
     <!-- Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow:300,400,700%7CMontserrat:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="${base}/resources/user/plugins/font-awesome/css/font-awesome.min.css">
@@ -142,11 +142,9 @@
                       <div class="ps-shoe__content">
                         <div class="ps-shoe__variants">
                           <div class="ps-shoe__variant normal">
-	                          <img src="${base}/file/upload/${product.productImages[0].path}" alt="">
-	                          <img src="${base}/file/upload/${product.productImages[1].path}" alt="">
-	                          <img src="${base}/file/upload/${product.productImages[2].path}" alt="">
-	                          <img src="${base}/file/upload/${product.productImages[3].path}" alt="">
-                          	  <img src="${base}/file/upload/${product.productImages[4].path}" alt="">
+                          <c:forEach var="productImages" items="${product.productImages }">
+	                          <img src="${base}/file/upload/${productImages.path}" alt="">
+                          </c:forEach> 
                           </div>
                           <select class="ps-rating ps-shoe__rating">
                             <option value="1">1</option>
@@ -158,7 +156,7 @@
                         </div>
                         <div class="ps-shoe__detail">
                         <a class="ps-shoe__name" href="${base}/detail-product/${product.seo }" style="text-transform: uppercase">${product.title }</a>
-                          <span class="ps-shoe__price">${product.priceVN }</span>
+                          <span class="ps-shoe__price">${product.price } $</span>
                         </div>
                       </div>
                     </div>
