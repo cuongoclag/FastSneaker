@@ -93,8 +93,8 @@ public class SignupController {
 			request.setAttribute("error", "The email address is already exist!");
 			return "login";
 		}
-		sendEmail("fastsneakercompany@gmail.com", email, "Welcome to FlatShop!",
-				"Hello, " + email.split("@")[0] + "! Please confirm that you can login in FlatShop!" + " Your confirmation code is: " + code);
+		sendEmail("fastsneakercompany@gmail.com", email, "Welcome to FastSneaker!",
+				"Hello, " + email.split("@")[0] + "! Please confirm that you can login in FastSneaker!" + " Your confirmation code is: " + code);
 		session.setAttribute("codeVerify", code);
 		return "redirect:/signup";
 	}
