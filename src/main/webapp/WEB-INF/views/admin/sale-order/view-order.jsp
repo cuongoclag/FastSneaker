@@ -13,117 +13,135 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>Tạo Sản Phẩm Mới</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
+    <title>SB Admin 2 - Dashboard</title>
 
+    <!-- Custom fonts for this template-->
+    <link href="${base}/resources/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-<link href="${base}/css/users/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="${base}/resources/admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <script type="text/javascript" src="${base}/resources/admin/js/old/delete-saleOrder.js"></script>
 
 </head>
-<body>
-	<div class="wrapper" style="background: white;">
+
+<body id="page-top">
+	<div id="wrapper">
 		<!-- header -->
-		<jsp:include page="/WEB-INF/views/admin/common/Header.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/views/admin/common/Menu.jsp"></jsp:include>
 		<!-- /header -->
-		<div class="content" style="display: flex;">
+		<div id="content-wrapper" class="d-flex flex-column">
+		<div id="content">
 			<!-- menu -->
-			<jsp:include page="/WEB-INF/views/admin/common/Menu.jsp"></jsp:include>
+			<jsp:include page="/WEB-INF/views/admin/common/Header.jsp"></jsp:include>
 			<!-- /menu -->
-			<div class="content">
-				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-					<div class="my-4" id="print_div">
-						<h2 style="text-align: center;">
-							Thông tin đơn hàng <span style="color: red;">${saleOrder.code }</span>
-						</h2>
-						<div class="table-responsive"
-							style="width: 1150px; margin-top: 20px;">
-
-							<h3>Thông tin khách hàng</h3>
-							<table class="table" style="width: 400px;">
-								<tr style="width: 400px;">
-									<th>Họ và tên:</th>
-									<td>${saleOrder.customerName }</td>
-								</tr>
-								<tr style="width: 400px;">
-									<th>Số điện thoại:</th>
-									<td>${saleOrder.customerPhone }</td>
-								</tr>
-								<tr style="width: 400px;">
-									<th>Email:</th>
-									<td>${saleOrder.customerEmail }</td>
-								</tr>
-								<tr style="width: 400px;">
-									<th>Địa chỉ:</th>
-									<td>${saleOrder.customerAddress }</td>
-								</tr>
-							</table>
-							<div style="border-bottom: 5px dashed blue;"></div>
-							<h3>Danh sách sản phẩm</h3>
-							<table class="table table-striped table-sm">
-								<thead>
-									<tr>
-										<th>Id</th>
-										<th>Tên sản phẩm</th>
-										<th>Giá tiền</th>
-										<th>Số lượng</th>
-									</tr>
-								</thead>
-								<tbody style="border: 1px solid #b5b5b5">
-									<c:forEach items="${saleOrderProduct }" var="saleOrderProducts">
-										<tr>
-											<td>${saleOrderProducts.id}</td>
-											<td>${saleOrderProducts.product.title }</td>
-											<td>${saleOrderProducts.product.priceVN }</td>
-											<td>${saleOrderProducts.quantity}</td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-							<table style="float: right; width: 200px;">
-								<tr>
-									<th style="border-bottom: 1px solid red; padding-bottom: 10px;">Tổng:
-									</th>
-									<td
-										style="color: red; border-bottom: 1px solid red; padding-bottom: 10px;">${saleOrder.totalVN }</td>
-								</tr>
-							</table>
-
-						</div>
-
-					</div>
+			<!-- Begin Page Content -->
+                <div class="container-fluid">
+                	<div  id="print_div">
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Order Information <span style="color: red;">${saleOrder.code }</span></h1>
+                    <br/>
+                    <br/>
+                    <div>
+                    <h3>User Information</h3>
+                    <table class="table">
+					  <thead>
+					    <tr>
+					      <th scope="col">Name</th>
+					      <th scope="col">Phone</th>
+					      <th scope="col">Email</th>
+					      <th scope="col">Address</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <th>${saleOrder.customerName }</th>
+					      <td>${saleOrder.customerPhone }</td>
+					      <td>${saleOrder.customerEmail }</td>
+					      <td>${saleOrder.customerAddress }</td>
+					    </tr>
+					  </tbody>
+					</table>
+                    </div>
+                    <h3>List Product</h3>
+                    <table class="table">
+					  <thead>
+					    <tr>
+					      <th scope="col">ID</th>
+					      <th scope="col">Product Name</th>
+					      <th scope="col">Price</th>
+					      <th scope="col">Quantity</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  <c:forEach items="${saleOrderProduct }" var="saleOrderProducts">
+					    <tr>
+					      <th>${saleOrderProducts.id}</th>
+					      <td>${saleOrderProducts.product.title }</td>
+					      <td>${saleOrderProducts.product.price } $</td>
+					      <td>${saleOrderProducts.quantity}</td>
+					    </tr>
+					   </c:forEach>
+					  </tbody>
+					</table>
+					<table class="table">
+					  <thead>
+					    <tr>
+					      <th style="color: red">TOTAL</th>
+					      <th>${saleOrder.total } $</th>
+					    </tr>
+					  </thead>
+					</table>
+					</div>	
 					<c:choose>
 						<c:when test="${saleOrder.status =='true'}">
 							<button type="button" name=""
 								onclick="confirmDelete('${saleOrder.id }')"
 								class="btn btn-primary btn-sm"
-								style="margin-left: 500px; margin-top: 50px;">Hoàn
-								Thành</button>
+								">Complete </button>
 						</c:when>
 						<c:otherwise>
 							<button type="button" name="" class="btn btn-danger btn-sm"
-								style="margin-left: 500px; margin-top: 50px;">Đã Hoàn
-								Thành</button>
+								">Completed</button>
 						</c:otherwise>
 					</c:choose>
-					<a href="${base }/admin/list-order"><button type="button"
-							name="" class="btn btn-primary btn-sm" style="margin-top: 50px;">Thoát</button></a>
-					<button type="button" name="" class="btn btn-primary btn-sm"
-						style="margin-top: 50px;" onclick="printdiv('print_div')">Print</button>
-				</main>
-			</div>
+					<a href="${base }/admin/list-order" class="btn btn-danger btn-sm">Back</a>
+					<button type="button" name="" class="btn btn-primary btn-sm" onclick="printdiv('print_div')">Print</button>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+		</div>
 		</div>
 	</div>
-	<!-- js -->
-	<script src="${base}/css/users/bootstrap/js/jquery-3.5.1.min.js"></script>
-	<script src="${base}/css/users/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript"
-		src="${base}/js/admin/delete-saleOrder.js"></script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="${base}/resources/admin/vendor/jquery/jquery.min.js"></script>
+    <script src="${base}/resources/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="${base}/resources/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="${base}/resources/admin/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="${base}/resources/admin/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="${base}/resources/admin/js/demo/chart-area-demo.js"></script>
+    <script src="${base}/resources/admin/js/demo/chart-pie-demo.js"></script>
 	<script type="text/javascript">
 		function printdiv(printpage) {
 			var headstr = "<html><head><title></title></head><body>";
@@ -137,4 +155,5 @@
 		}
 	</script>
 </body>
+
 </html>
