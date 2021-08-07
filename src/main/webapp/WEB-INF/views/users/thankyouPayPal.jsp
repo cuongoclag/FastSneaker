@@ -54,8 +54,8 @@
 <main class="ps-main">
       <div class="ps-content pt-80 pb-80">
         <div class="ps-container text-center">
-          <h1>Cảm ơn bạn đã mua hàng</h1>
-		  <p>Check mail <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">tại đây</a></p>
+          <h1>Thank you for your purchase</h1>
+		  <p>Check mail <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank" style="color : red">Here</a></p>
         </div>
       </div>
       

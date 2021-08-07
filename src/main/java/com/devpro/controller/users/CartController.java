@@ -291,21 +291,25 @@ public class CartController extends BaseController {
 		HttpSession httpSession = request.getSession();
 		SaleOrder saleOrder = new SaleOrder();
 		Cart cart = (Cart) httpSession.getAttribute("GIO_HANG");
-		List<CartItem> cartItems = cart.getCartItems();
-
-		BigDecimal sum = new BigDecimal(0);
-		String sumVN = null;
-		for (CartItem item : cartItems) {
-			SaleOrderProducts saleOrderProducts = new SaleOrderProducts();
-			saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
-			saleOrderProducts.setQuantity(item.getQuantity());
-			saleOrder.addSaleOrderProducts(saleOrderProducts);
-			for (int i = 1; i <= item.getQuantity(); i++) {
-				sum = sum.add(saleOrderProducts.getProduct().getPrice());
+		
+		if(cart == null) {
+			return "aaaaaa";
+		} else {
+			List<CartItem> cartItems = cart.getCartItems();
+			BigDecimal sum = new BigDecimal(0);
+			String sumVN = null;
+			for (CartItem item : cartItems) {
+				SaleOrderProducts saleOrderProducts = new SaleOrderProducts();
+				saleOrderProducts.setProduct(productRepo.getOne(item.getProductId()));
+				saleOrderProducts.setQuantity(item.getQuantity());
+				saleOrder.addSaleOrderProducts(saleOrderProducts);
+				for (int i = 1; i <= item.getQuantity(); i++) {
+					sum = sum.add(saleOrderProducts.getProduct().getPrice());
+				}
 			}
-		}
-		model.addAttribute("TOTAL", sum);
-		return "users/checkout";
+			model.addAttribute("TOTAL", sum);
+			return "users/checkout";
+		}		
 	}
 
 	@RequestMapping(value = {
