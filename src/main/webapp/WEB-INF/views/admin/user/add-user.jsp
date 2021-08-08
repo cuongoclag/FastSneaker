@@ -88,7 +88,7 @@
 					  	</div>
 					  <div class="form-group">
 					    <label for="inputAddress">Address</label>
-					    <form:input type="number" class="form-control" path="address" aria-describedby="" />
+					    <form:input type="text" class="form-control" path="address" aria-describedby="" />
 					  </div>
 					  <div class="form-group">
 					    <label for="inputAddress">Avatar</label>
@@ -105,11 +105,11 @@
 					    <div class="row">
 					    	<div class="col-md-6">
 					    	<label for="">Admin</label>
-					    	<form:checkbox class="form-control" path="roles" aria-describedby="" value="1"/>
+					    	<form:checkbox class="form-control" path="roles" aria-describedby="" value="5"/>
 					    	</div>
 							<div class="col-md-6">
 							<label for="">User</label>
-							<form:checkbox class="form-control" path="roles" aria-describedby="" value="2"/>
+							<form:checkbox class="form-control" path="roles" aria-describedby="" value="6"/>
 							</div>
 					    </div>					    
 					  </div>

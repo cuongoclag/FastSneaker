@@ -13,9 +13,6 @@
 	uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
-<!--[if IE 7]><html class="ie ie7"><![endif]-->
-<!--[if IE 8]><html class="ie ie8"><![endif]-->
-<!--[if IE 9]><html class="ie ie9"><![endif]-->
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -54,55 +51,17 @@
 	<!-- /header -->
 
   <body class="ps-loading">
-    <main class="ps-main">
-      <div class="ps-checkout pt-80 pb-80">
-        <div class="ps-container">
-        <div class="info-1">
-			<div class="title">
-				<span>Receiver's Address</span>
-			</div>
-			<div class="content">
-				<br> <span style="font-size: 18px; font-weight: bold;">${saleOrders.customerName }</span><br>
-				<span>Address: ${saleOrders.customerAddress }</span>
-				<br> 
-				<span>Phone: ${saleOrders.customerPhone }</span>
-				<c:choose>
-					<c:when test="${saleOrders.status == 'true'}">
-						<span style="background: #FFFF00; border-radius: 5px; color: white;">&nbsp;Pending&nbsp;</span>
-					</c:when>
-					<c:otherwise>
-						<span style="background: #0099FF; border-radius: 5px; color: white;">&nbsp;Completed&nbsp;</span>
-					</c:otherwise>
-				</c:choose>
-			</div>
-		</div>
-        
-		   <table class="table table-bordered text-center">
-		    <thead>
-		      <tr>
-		        <th class="text-center h3 font-weight-bold">Product</th>
-		        <th class="text-center h3 font-weight-bold">Price</th>
-		        <th class="text-center h3 font-weight-bold">Sale Price</th>
-		        <th class="text-center h3 font-weight-bold">Quantity</th>
-		        <th class="text-center h3 font-weight-bold">Provisional</th>
-		      </tr>
-		    </thead>
-		    <tbody>
-		      <c:forEach var="saleOrderProduct" items="${saleOrderProducts }">
-				<tr>
-					<td><img alt="" style="width: 80px" src="${base}/file/upload/${saleOrderProduct.product.productImages[0].path}"><span>
-					<a href="${base}/detail-product/${saleOrderProduct.product.seo }">${saleOrderProduct.product.title }</a></span></td>
-					<td>${saleOrderProduct.product.priceVN }</td>
-					<td>0 đ</td>
-					<td>${saleOrderProduct.quantity }</td>
-					<td>${saleOrderProduct.product.price } $</td>
-				</tr>
-			</c:forEach>
-		    </tbody>
-		  </table>
+<main class="ps-main">
+      <div class="ps-content pt-80 pb-80">
+        <div class="ps-container text-center">
+          <h1>CART EMPTY</h1>
         </div>
       </div>
-
+      
+      <!-- footer -->
+		<jsp:include page="/WEB-INF/views/users/common/footer.jsp"></jsp:include>
+	  <!-- /footer -->
+      
     </main>
     <!-- JS Library-->
     <script type="text/javascript" src="${base}/resources/user/plugins/jquery/dist/jquery.min.js"></script>
@@ -127,6 +86,7 @@
 <script type="text/javascript" src="${base}/resources/user/plugins/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
 <script type="text/javascript" src="${base}/resources/user/plugins/revolution/js/extensions/revolution.extension.actions.min.js"></script>
     <!-- Custom scripts-->
+    <script src="${base}/resources/user/js/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="${base}/resources/user/js/main.js"></script>
   </body>
 </html>

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.devpro.entities.AjaxResponse;
 import com.devpro.entities.Contact;
 import com.devpro.entities.User;
 import com.devpro.services.UserService;
@@ -96,6 +98,7 @@ public class SignupController {
 		sendEmail("fastsneakercompany@gmail.com", email, "Welcome to FastSneaker!",
 				"Hello, " + email.split("@")[0] + "! Please confirm that you can login in FastSneaker!" + " Your confirmation code is: " + code);
 		session.setAttribute("codeVerify", code);
+		request.setAttribute("success", "Check your mail to get code");
 		return "redirect:/signup";
 	}
 

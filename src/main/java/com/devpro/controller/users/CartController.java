@@ -293,7 +293,7 @@ public class CartController extends BaseController {
 		Cart cart = (Cart) httpSession.getAttribute("GIO_HANG");
 		
 		if(cart == null) {
-			return "aaaaaa";
+			return "users/cartEmpty";
 		} else {
 			List<CartItem> cartItems = cart.getCartItems();
 			BigDecimal sum = new BigDecimal(0);

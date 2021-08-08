@@ -39,7 +39,11 @@
 							id = String.valueOf(((User)principal).getId());
 						}
 						%> 
-	                  	<a href="${base}/history/<%=id%>"><%=username%></a>
+						<a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%=username%><i class="fa fa-angle-down"></i></a>
+	                  	<ul class="dropdown-menu">
+	                       <li><a href="${base}/history/<%=id%>">History Order</a></li>
+	                       <li><a href="${base }/user/<%=id%>">Profile</a></li>
+	                    </ul>
 	                  	</div>
                   	</sec:authorize>
                   	<sec:authorize access="isAuthenticated()">
@@ -102,21 +106,6 @@
               <button type="submit" value="Search"><i class="ps-icon-search"></i></button>
             </form>
             <div class="ps-cart"><a class="ps-cart__toggle" href="${base}/cart/check-out"><span id="btnCheckout"><i>${SL_SP_GIO_HANG }</i></span><i class="ps-icon-shopping-cart"></i></a>
-              <div class="ps-cart__listing">
-                <div class="ps-cart__content">
-                  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                    <div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="${base}/resources/user/images/cart-preview/3.jpg" alt=""></div>
-                    <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="">The Rolling Pin</a>
-                      <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="ps-cart__total">
-                  <p>Number of items:<span>36</span></p>
-                  <p>Item Total:<span>£528.00</span></p>
-                </div>
-                <div class="ps-cart__footer"><a class="ps-btn" href="${base}/cart/check-out">Check out<i class="ps-icon-arrow-left"></i></a></div>
-              </div>
             </div>
             <div class="menu-toggle"><span></span></div>
           </div>

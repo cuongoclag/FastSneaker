@@ -70,7 +70,7 @@
 			<tr>
 				<td><a href="/order/view/${saleOrder.code }">${saleOrder.code }</a></td>
 				<td>${saleOrder.createdDate }</td>
-				<td>${saleOrder.totalVN }</td>
+				<td>${saleOrder.total } $</td>
 			</tr>
 	  </c:forEach>
     </tbody>

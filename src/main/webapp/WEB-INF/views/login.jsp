@@ -52,6 +52,7 @@
           <form class="sign-up-form" method="post" action="/save-guestUser" modelAttribute="user" enctype="multipart/form-data">
             <h2 class="title">Sign up</h2>
             <p style="color : red">${error }</p>
+            <p style="color : blue">${success }</p>
             
             <div class="form-bigger">
             <div class="form-smaller">
@@ -99,7 +100,7 @@
 	              <i class="fab fa-codepen"></i>
 	              <input type="text" path="code" name="code" placeholder="Code"/>
 	        </div>
-            <button type="submit" formaction="/send-code" 
+            <button type="submit" formaction="/send-code"
             style="border-radius: 10px; width: 20%;
 		    height: 30px;
 		    background-color: #5995FD;

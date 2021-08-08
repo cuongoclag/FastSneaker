@@ -38,7 +38,7 @@ public class ContactController{
 		System.out.println("Last Name is: " + contact.getLastName());
 		System.out.println("Email is: " + contact.getEmail());
 		System.out.println("Subject is: " + contact.getSubject());
-		model.addAttribute("message", "Đã lưu thành công!");
+		model.addAttribute("message", "Save Success!");
 		model.addAttribute("contact", new Contact());
 		return "users/UserContact";
 	}

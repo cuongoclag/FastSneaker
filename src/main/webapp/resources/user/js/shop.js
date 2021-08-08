@@ -101,7 +101,7 @@
 			dataType : "json", // dữ liệu từ web-service trả về là json.
 			success : function(jsonResult) { // được gọi khi web-service trả
 				// về dữ liệu.
-				alert('thanh cong');
+				alert('Success');
 
 				$("#btnCheckout").html("(" + jsonResult.data + ")");
 

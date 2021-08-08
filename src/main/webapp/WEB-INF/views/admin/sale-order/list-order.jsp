@@ -81,12 +81,10 @@
 											<td>
 												<c:choose>
 													<c:when test="${saleOrder.status =='true'}">
-														<span
-															style="background: #29ed3b; border-radius: 5px; color: white;">&nbsp;Active&nbsp;</span>
+														<span style="background: #FFFF00; border-radius: 5px; color: white;">&nbsp;Pending&nbsp;</span>
 													</c:when>
 													<c:otherwise>
-														<span
-															style="background: #c12731; border-radius: 5px; color: white;">&nbsp;Inactive&nbsp;</span>
+														<span style="background: #0099FF; border-radius: 5px; color: white;">&nbsp;Completed&nbsp;</span>
 													</c:otherwise>
 												</c:choose>
 											</td>

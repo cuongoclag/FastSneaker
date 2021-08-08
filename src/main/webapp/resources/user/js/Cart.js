@@ -1,5 +1,5 @@
 function confirmDelete(productId) {
-	var del = confirm("Bạn có muốn xóa sản phẩm này không?");
+	var del = confirm("Do you want to delete this product?");
 	if (del == true) {
 		Cart.deleteProduct(productId);
 	} else {
@@ -22,7 +22,7 @@ var Cart = {
 					if (jsonResult.status == 200) {
 						location.reload(true);
 					} else {
-						alert('Lỗi');
+						alert('Error');
 					}
 				},
 				error : function(jqXhr, textStatus, errorMessage) { // error

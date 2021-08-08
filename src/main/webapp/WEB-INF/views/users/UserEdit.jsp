@@ -1,7 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- JSTL -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <c:url value="${pageContext.request.contextPath}" var="base" />
+
+<!-- SPRING FORM -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+<!-- SPRING FORM -->
+<%@ taglib prefix="springform"
+	uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -43,97 +57,75 @@
 	<!-- /header -->
     
     <main class="ps-main">
-      <div class="test">
-        <div class="container">
-          <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
-                </div>
-          </div>
-        </div>
-      </div>
-      <div class="ps-product--detail pt-60">
+      <div class="ps-contact ps-section pb-80">
         <div class="ps-container">
+        <h1 style="margin: 2% 0">Edit My Profile</h1>
           <div class="row">
-            <div class="col-lg-10 col-md-12 col-lg-offset-1">
-              <div class="ps-product__thumbnail">
-                <div class="ps-product__preview">
-                  <div class="ps-product__variants">
-                    <div class="item"><img src="${base}/file/upload/${product.productImages[0].path}" alt="" id="place-img"></div>
-                    <div class="item"><img src="${base}/file/upload/${product.productImages[1].path}" alt="" id="img1"></div>
-                    <div class="item"><img src="${base}/file/upload/${product.productImages[2].path}" alt="" id="img2"></div>
-                    <div class="item"><img src="${base}/file/upload/${product.productImages[3].path}" alt="" id="img3"></div>
-                    <div class="item"><img src="${base}/file/upload/${product.productImages[4].path}" alt="" id="img4"></div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                  <div class="ps-section__header mb-50">
+                    <form:form method="post" action="/user/save-user"
+							modelAttribute="user" enctype="multipart/form-data">
+						<form:hidden path="id" />
+						<div class="row">
+							<div class="form-group col-md-6">
+						    <label for="inputAddress">Username</label>
+						    <form:input type="text" class="form-control" path="username" aria-describedby="" />
+						  	</div>
+						  	<div class="form-group col-md-6">
+						    <label for="inputAddress">Surname and middle name</label>
+						    <form:input type="text" class="form-control" path="firstName" aria-describedby="" />
+						  	</div>
+						</div>		
+						<div class="row">
+							<div class="form-group col-md-6">
+						    <label for="inputAddress">Password</label>
+						    <form:input type="password" class="form-control" path="password" aria-describedby="" />
+						  	</div>
+						  	<div class="form-group col-md-6">
+						    <label for="inputAddress">Name</label>
+						    <form:input type="password" class="form-control" path="name" aria-describedby="" />
+						  	</div>
+						</div>  
+					  
+					  	<div class="row">
+					  		<div class="form-group col-md-6">
+						    <label for="inputAddress">Email</label>
+						    <form:input type="email" class="form-control" path="email" aria-describedby="" />
+						 	</div>
+						  	<div class="form-group col-md-6">
+						    <label for="inputAddress">Phone</label>
+						    <form:input type="number" class="form-control" path="phone" aria-describedby="" />
+						  	</div>
+					  	</div>
+					  <div class="form-group">
+					    <label for="inputAddress">Address</label>
+					    <form:input type="text" class="form-control" path="address" aria-describedby="" />
+					  </div>
+					  <div class="form-group">
+					    <label for="inputAddress">Avatar</label>
+					    <input type="file" class="form-control" name="images" aria-describedby="" />
+					  </div>
+					  <div class="form-group form-check">
+					    <form:radiobutton  path="gender" class="form-check-input" value="true" />
+					    <label class="form-check-label mr-5" for="">Male</label>
+					    <form:radiobutton  path="gender" class="form-check-input" value="false" />
+					    <label class="form-check-label" for="">Female</label>
+					  </div>
+					  <div class="form-group form-check">
+					    <form:checkbox path="status" class="form-check-input" id="" />
+					    <label class="form-check-label" for="exampleCheck1">Status</label>
+					  </div>
+					  <button type="submit" class="ps-btn">Submit</button>
+					</form:form>
                   </div>
                 </div>
-                <div class="ps-product__image">
-                  <div class="item"><img class="zoom" src="${base}/file/upload/${product.productImages[0].path}" alt="" data-zoom-image="${base}/file/upload/${product.productImages[0].path}"></div>
-                  <div class="item"><img class="zoom" src="${base}/file/upload/${product.productImages[1].path}" alt="" data-zoom-image="${base}/file/upload/${product.productImages[1].path}"></div>
-                  <div class="item"><img class="zoom" src="${base}/file/upload/${product.productImages[2].path}" alt="" data-zoom-image="${base}/file/upload/${product.productImages[2].path}"></div>
-                  <div class="item"><img class="zoom" src="${base}/file/upload/${product.productImages[3].path}" alt="" data-zoom-image="${base}/file/upload/${product.productImages[3].path}"></div>
-                  <div class="item"><img class="zoom" src="${base}/file/upload/${product.productImages[4].path}" alt="" data-zoom-image="${base}/file/upload/${product.productImages[4].path}"></div>
-                </div>
-              </div>
-              <div class="ps-product__thumbnail--mobile">
-                <div class="ps-product__main-img"><img src="${base}/file/upload/${product.productImages[0].path}" alt=""></div>
-                <div class="ps-product__preview owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="20" data-owl-nav="true" data-owl-dots="false" data-owl-item="3" data-owl-item-xs="3" data-owl-item-sm="3" data-owl-item-md="3" data-owl-item-lg="3" data-owl-duration="1000" data-owl-mousedrag="on">
-                <img src="${base}/file/upload/${product.productImages[0].path}" alt="">
-                <img src="${base}/file/upload/${product.productImages[1].path}" alt="">
-                <img src="${base}/file/upload/${product.productImages[2].path}" alt="">
-                <img src="${base}/file/upload/${product.productImages[3].path}" alt="">
-                <img src="${base}/file/upload/${product.productImages[4].path}" alt="">
-                </div>
-              </div>
-              <div class="ps-product__info">
-                <div class="ps-product__rating">
-                  <select class="ps-rating">
-                    <option value="1">1</option>
-                    <option value="1">2</option>
-                    <option value="1">3</option>
-                    <option value="1">4</option>
-                    <option value="2">5</option>
-                  </select>
-                </div>
-                <h1>${product.title }</h1>
-                <h3 class="ps-product__price">${product.price } $</h3>
-                <div class="ps-product__block ps-product__quickview">
-                  <h4>QUICK REVIEW</h4>
-                  <p>${product.shortDetails }</p>
-                </div>
-                <div class="ps-product__shopping">
-                <button class="ps-btn mb-10" type="button" onclick="Shop.addItemToCart(${product.id}, 1)">Add to cart<i class="ps-icon-next"></i></button>
-                </div>
-              </div>
-              <div class="clearfix"></div>
-              <div class="ps-product__content mt-50">
-                <ul class="tab-list" role="tablist">
-                  <li class="active"><a href="#tab_01" aria-controls="tab_01" role="tab" data-toggle="tab">Overview</a></li>
-                  <li><a href="#tab_02" aria-controls="tab_02" role="tab" data-toggle="tab">Review</a></li>
-                </ul>
-              </div>
-              <div class="tab-content mb-60">
-                <div class="tab-pane active" role="tabpanel" id="tab_01">
-                  <p>${product.shortDes }</p>
-                </div>
-                <div class="tab-pane" role="tabpanel" id="tab_02">
-					<div id="fb-root"></div>
-					<script async defer crossorigin="anonymous"
-						src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v8.0"
-						nonce="1L3hNQ0b"></script>
-	
-					<div id="comment_fb">
-						<div class="fb-comments"
-							data-href="http://localhost:8888/detail-product/${product.seo }"
-							data-numposts="5" data-width="1150"></div>
-					</div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
-      
-     <!-- footer -->
+      <!-- footer -->
 		<jsp:include page="/WEB-INF/views/users/common/footer.jsp"></jsp:include>
-	<!-- /footer -->
+	  <!-- /footer -->
+      
     </main>
     <!-- JS Library-->
     <script type="text/javascript" src="${base}/resources/user/plugins/jquery/dist/jquery.min.js"></script>
