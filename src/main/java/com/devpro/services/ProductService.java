@@ -140,7 +140,7 @@ public class ProductService {
 					List<ProductImages> productImages = productInDb.getProductImages();
 					// xoá ảnh cũ đi
 					for (ProductImages _images : productImages) {
-						new File("C:/Users/ACER/Documents/workspace-spring-tool-suite-4-4.11.0.RELEASE/fastsneaker/upload/" + _images.getPath()).delete();
+						new File("C:\\Users\\ACER\\Documents\\workspace-spring-tool-suite-4-4.11.0.RELEASE\\fastsneaker\\upload" + _images.getPath()).delete();
 					}
 					product.clearProductImages();
 				} else { // ảnh phải giữ nguyên
@@ -152,7 +152,7 @@ public class ProductService {
 				for (MultipartFile image : images) {
 					// Lưu file vào host.
 					image.transferTo(new File(
-							"C:/Users/ACER/Documents/workspace-spring-tool-suite-4-4.11.0.RELEASE/fastsneaker/upload/" + image.getOriginalFilename()));
+							"C:\\Users\\ACER\\Documents\\workspace-spring-tool-suite-4-4.11.0.RELEASE\\fastsneaker\\upload" + image.getOriginalFilename()));
 					ProductImages productImages = new ProductImages();
 					productImages.setTitle(image.getOriginalFilename());
 					productImages.setPath(image.getOriginalFilename());

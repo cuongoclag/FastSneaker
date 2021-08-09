@@ -33,5 +33,6 @@ public class MVCConf implements WebMvcConfigurer {
 		
 		// dành cho thư mục upload.
 		registry.addResourceHandler("/file/upload/**").addResourceLocations("file:C:/Users/ACER/Documents/workspace-spring-tool-suite-4-4.11.0.RELEASE/fastsneaker/upload/");
+		registry.addResourceHandler("/file/upload_avt/**").addResourceLocations("file:C:/Users/ACER/Documents/workspace-spring-tool-suite-4-4.11.0.RELEASE/fastsneaker/upload_avt/");
 		}
 	}

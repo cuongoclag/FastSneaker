@@ -74,12 +74,12 @@
                             <div class="form-group form-group--inline">
                               <label for="exampleInputPassword1">Email Address<span>*</span>
                               </label>
-                              ${customerAddress }
+                              ${customerEmail }
                             </div>
                             <div class="form-group form-group--inline">
                               <label for="exampleInputPassword1">Address<span>*</span>
                               </label>
-                              ${customerEmail }
+                              ${customerAddress }
                             </div>
                     </div>
                   </div>

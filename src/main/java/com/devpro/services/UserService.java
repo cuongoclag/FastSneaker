@@ -83,7 +83,7 @@ public class UserService {
 				 String avatar = userInDb.getAvatar();
 				if (!isEmptyUploadFile(images)) { // nếu admin sửa ảnh sản phẩm
 					// xoá ảnh cũ đi
-					 new File("C:/Users/ACER/Documents/workspace-spring-tool-suite-4-4.11.0.RELEASE/fastsneaker/upload_avt/" + user.getAvatar()).delete();
+					 new File("C:\\Users\\ACER\\Documents\\workspace-spring-tool-suite-4-4.11.0.RELEASE\\fastsneaker\\upload_avt" + user.getAvatar()).delete();
 				
 				} else { // ảnh phải giữ nguyên
 					user.setAvatar(avatar);
@@ -93,7 +93,7 @@ public class UserService {
 				for (MultipartFile image : images) {
 					// Lưu file vào host.
 					image.transferTo(new File(
-							"C:/Users/ACER/Documents/workspace-spring-tool-suite-4-4.11.0.RELEASE/fastsneaker/upload_avt/" + image.getOriginalFilename()));					
+							"C:\\Users\\ACER\\Documents\\workspace-spring-tool-suite-4-4.11.0.RELEASE\\fastsneaker\\upload_avt" + image.getOriginalFilename()));					
 					user.setAvatar(image.getOriginalFilename());
 				}
 			}

@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- sử dụng tiếng việt -->
+<%@page import="com.devpro.entities.User"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 
 <!-- JSTL -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -63,6 +64,7 @@
           <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                   <div class="ps-section__header mb-50">
+					<img src="${base}/file/upload_avt/${user.avatar}" alt="" name="images" width="100px" height="100px"/>
                     <form:form method="post" action="/user/save-user"
 							modelAttribute="user" enctype="multipart/form-data">
 						<form:hidden path="id" />
