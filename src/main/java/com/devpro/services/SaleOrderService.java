@@ -168,7 +168,7 @@ public class SaleOrderService {
 			saleOrder.addSaleOrderProducts(saleOrderProducts);
 			saleOrderProducts.setStatus(true);
 			for (int i = 1; i <= item.getQuantity(); i++) {
-				sum = sum.add(saleOrderProducts.getProduct().getPrice());
+				sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
 			}
 
 		}
@@ -244,7 +244,7 @@ public class SaleOrderService {
 			saleOrder.addSaleOrderProducts(saleOrderProducts);
 			saleOrderProducts.setStatus(true);
 			for (int i = 1; i <= item.getQuantity(); i++) {
-				sum = sum.add(saleOrderProducts.getProduct().getPrice());
+				sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
 			}
 
 		}

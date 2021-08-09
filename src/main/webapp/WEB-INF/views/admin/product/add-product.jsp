@@ -66,6 +66,10 @@
 					    <form:input type="text" class="form-control" path="price"  aria-describedby="" />
 					  </div>
 					  <div class="form-group">
+					    <label for="inputAddress">Promotional Price</label>
+					    <form:input type="text" class="form-control" path="promotionalPrice"  aria-describedby="" />
+					  </div>
+					  <div class="form-group">
 					    <label for="inputAddress">Description</label>
 					    <form:textarea class="form-control" id="txtshortDescription1" path="shortDes" />
 					  </div>

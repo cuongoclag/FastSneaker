@@ -94,7 +94,7 @@ public class CartController extends BaseController {
 			saleOrderProducts.setQuantity(item.getQuantity());
 			saleOrder.addSaleOrderProducts(saleOrderProducts);
 			for (int i = 1; i <= item.getQuantity(); i++) {
-				sum = sum.add(saleOrderProducts.getProduct().getPrice());
+				sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
 			}
 			Locale locale = new Locale("vi", "VN");
 			NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
@@ -143,7 +143,7 @@ public class CartController extends BaseController {
 			saleOrderProducts.setQuantity(item.getQuantity());
 			saleOrder.addSaleOrderProducts(saleOrderProducts);
 			for (int i = 1; i <= item.getQuantity(); i++) {
-				sum = sum.add(saleOrderProducts.getProduct().getPrice());
+				sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
 			}
 			Locale locale = new Locale("vi", "VN");
 			NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
@@ -208,7 +208,7 @@ public class CartController extends BaseController {
 			saleOrderProducts.setQuantity(item.getQuantity());
 			saleOrder.addSaleOrderProducts(saleOrderProducts);
 			for (int i = 1; i <= item.getQuantity(); i++) {
-				sum = sum.add(saleOrderProducts.getProduct().getPrice());
+				sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
 			}
 			Locale locale = new Locale("vi", "VN");
 			NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
@@ -271,7 +271,7 @@ public class CartController extends BaseController {
 			saleOrderProducts.setQuantity(item.getQuantity());
 			saleOrder.addSaleOrderProducts(saleOrderProducts);
 			for (int i = 1; i <= item.getQuantity(); i++) {
-				sum = sum.add(saleOrderProducts.getProduct().getPrice());
+				sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
 			}
 			Locale locale = new Locale("vi", "VN");
 			NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
@@ -304,7 +304,7 @@ public class CartController extends BaseController {
 				saleOrderProducts.setQuantity(item.getQuantity());
 				saleOrder.addSaleOrderProducts(saleOrderProducts);
 				for (int i = 1; i <= item.getQuantity(); i++) {
-					sum = sum.add(saleOrderProducts.getProduct().getPrice());
+					sum = sum.add(saleOrderProducts.getProduct().getPromotionalPrice());
 				}
 			}
 			model.addAttribute("TOTAL", sum);
@@ -380,7 +380,7 @@ public class CartController extends BaseController {
 
 			Product product = productRepo.getOne(data.getProductId());
 			data.setProductName(product.getTitle());
-			data.setUnitPrice(product.getPrice());
+			data.setUnitPrice(product.getPromotionalPrice());
 			cart.getCartItems().add(data);
 		}
 		for (CartItem item : cartItems) {

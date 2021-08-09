@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <c:url value="${pageContext.request.contextPath}" var="base" />
 <!DOCTYPE html>
@@ -94,7 +95,16 @@
                   </select>
                 </div>
                 <h1>${product.title }</h1>
-                <h3 class="ps-product__price">${product.price } $</h3>
+                <c:if test="${product.price == product.promotionalPrice}">
+					 <h3 class="ps-product__price">Price:</h3>
+					 <h3 class="ps-product__price"> ${product.promotionalPrice}</h3>
+				</c:if>
+				<c:if test="${product.price > product.promotionalPrice}">
+					 <h3 class="ps-product__price">Promotional Price:</h3>
+					 <h3 class="ps-product__price"> ${product.promotionalPrice}</h3>
+					 <h3 class="ps-product__price">Price:</h3>
+					<del> <h3 class="ps-product__price"> ${product.price} </h3></del>
+				</c:if>
                 <div class="ps-product__block ps-product__quickview">
                   <h4>QUICK REVIEW</h4>
                   <p>${product.shortDetails }</p>

@@ -26,6 +26,9 @@ public class Product extends BaseEntity {
 	
 	@Column(name = "price", precision = 13, scale = 2, nullable = false)
 	private BigDecimal price;
+	
+	@Column(name = "promotionalPrice", precision = 13, scale = 2, nullable = false)
+	private BigDecimal promotionalPrice;
 
 	@Column(name = "short_description", length = 3000, nullable = false)
 	private String shortDes;
@@ -36,6 +39,9 @@ public class Product extends BaseEntity {
 	
 	@Transient
 	private String priceVN;
+	
+	@Transient
+	private String promotionalPriceVN;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "category_id") // tên field khoá ngoại
@@ -78,6 +84,14 @@ public class Product extends BaseEntity {
 
 	public void setPrice(BigDecimal price) {
 		this.price = price;
+	}
+
+	public BigDecimal getPromotionalPrice() {
+		return promotionalPrice;
+	}
+
+	public void setPromotionalPrice(BigDecimal promotionalPrice) {
+		this.promotionalPrice = promotionalPrice;
 	}
 
 	public String getShortDes() {
@@ -126,11 +140,21 @@ public class Product extends BaseEntity {
 		NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
 		return fmt.format(price);
 	}
-	
 	@Transient
 	public void setPriceVN(String priceVN) {
 		this.priceVN = priceVN;
 	}
-
-
+	
+	@Transient
+	public String getPromotionalPriceVN() {
+		Locale locale = new Locale("vi", "VN");
+		NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+		return fmt.format(promotionalPrice);
+	}
+	
+	@Transient
+	public void setPromotionalPriceVN(String promotionalPriceVN) {
+		this.promotionalPriceVN = promotionalPriceVN;
+	}
+	
 }
