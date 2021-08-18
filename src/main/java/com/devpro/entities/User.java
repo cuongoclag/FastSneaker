@@ -9,6 +9,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +22,8 @@ import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.devpro.conf.AuthenticationProvider;
 
 @Entity
 @Table(name = "tbl_users")
@@ -48,6 +52,9 @@ public class User extends BaseEntity implements UserDetails{
 
 	@Column(name = "phone", length = 45, nullable = true)
 	private String phone;
+	
+	@Column(name = "reset_password_token", length = 45, nullable = true)
+	private String resetPasswordToken;
 
 	@Column(name = "address", length = 100, nullable = true)
 	private String address;
@@ -125,6 +132,14 @@ public class User extends BaseEntity implements UserDetails{
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
+	}
+
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
+	}
 
 	public String getAddress() {
 		return address;
@@ -149,6 +164,7 @@ public class User extends BaseEntity implements UserDetails{
 	public void setGender(boolean gender) {
 		this.gender = gender;
 	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return roles;

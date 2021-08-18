@@ -34,9 +34,12 @@
 			</c:if>
 			<c:if test="${param.accessDenied != null}">
 				<div class="alert alert-danger">
-					<p>Bạn không có quyền truy cập vào trang này</p>
+					<p>You do not have permission to access this page</p>
 				</div>
 			</c:if>
+			<div>
+				<h4><a href="/oauth2/authorization/google">Login with Google</a></h4>
+			</div>
             <div class="input-field">
               <i class="fas fa-user"></i>
               <input type="text" placeholder="Username" type="text" name="username"/>
@@ -46,7 +49,8 @@
               <input type="password" placeholder="Password" name="password"/>
             </div>
             <div class="g-recaptcha" data-sitekey="6LfNa6MbAAAAAEMrdL6lGuOXmFy3N7KrcfWi355b"></div>
-            <button class="btn solid" type="submit">LOGIN</button>          
+            <button class="btn solid" type="submit">LOGIN</button>    
+            <a href="/forgot_password">Forgot your password</a>      
           </form>
           
           <form class="sign-up-form" method="post" action="/save-guestUser" modelAttribute="user" enctype="multipart/form-data">

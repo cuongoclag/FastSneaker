@@ -12,6 +12,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+import com.devpro.site.security.oauth.UserOAuth2UserService;
+
 @Configuration
 @EnableWebSecurity
 public class SecureConf extends WebSecurityConfigurerAdapter {
@@ -48,14 +50,20 @@ public class SecureConf extends WebSecurityConfigurerAdapter {
 	    .authorizeRequests()
 			.antMatchers("/admin/home").hasAnyAuthority("ADMIN")
 	    	.antMatchers("/").permitAll()
-		    .and()
+	    	.antMatchers("/oauth2").permitAll()
+		.and()
 		.formLogin()
 		    .loginPage("/login")
 		    .usernameParameter("username")
 			.passwordParameter("password")
 			.successHandler(successHandler)
 			.failureUrl("/login?login_error=true")
-		    .and()
+		 .and()
+		 .oauth2Login()
+		 	.loginPage("/login")
+		 	.userInfoEndpoint().userService(oAuth2UserService)
+		 .and()
+		 .and()
 		 .logout()
 		    .logoutUrl("/logout")
 		    .logoutSuccessUrl("/login?logout")
@@ -106,5 +114,8 @@ public class SecureConf extends WebSecurityConfigurerAdapter {
 //            .failureUrl("/login?login_error=true") // nhập username, password sai thì redirect về trang nào.
 //            .permitAll();
 	}
+	
+	@Autowired
+	private UserOAuth2UserService oAuth2UserService;
 	
 }

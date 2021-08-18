@@ -50,7 +50,10 @@
                 <div class="container-fluid">
                 <a href="${base }/admin/add-user" class="btn btn-primary btn-icon-split">
                      <span class="text">Add User</span>
-                 </a>
+                </a>
+                <a href="${base }/admin/users/export" class="btn btn-primary btn-icon-split">
+                     <span class="text">Export to PDF</span>
+                </a>
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">List Users</h1>

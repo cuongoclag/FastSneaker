@@ -9,6 +9,9 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -73,6 +76,32 @@ public class UserService {
 			return null;
 		}
 	}
+	
+	public void updateResetPasswordToken(String token, String email) {
+		User user = findUserByEmail(email);
+		
+		if(user != null) {
+			user.setResetPasswordToken(token);
+			userRepo.save(user);
+		} else {
+			throw new UsernameNotFoundException("Could not find any user with email" + email);
+		}
+	}
+	
+	public User get(String resetPasswordToken) {
+		return userRepo.findByResetPasswordToken(resetPasswordToken);
+	}
+	
+	public void updatePassword(User user, String newPassword) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encodePassword = passwordEncoder.encode(newPassword);
+		
+		user.setPassword(encodePassword);
+		user.setResetPasswordToken(null);
+		userRepo.save(user);
+	}
+	
+	
 	@Transactional(rollbackOn = Exception.class)
 	public void saveUser(MultipartFile[] images, User user) throws Exception {
 		try {
@@ -121,4 +150,8 @@ public class UserService {
 			throw e;
 		}
 	}
+
+	public List<User> listAll() {
+        return userRepo.findAll(Sort.by("email").ascending());
+    }
 }
